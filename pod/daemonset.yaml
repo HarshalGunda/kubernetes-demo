@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ds1
+spec:
+  template:
+    metadata:
+      labels:
+        name: ds-todo
+    spec:
+      containers:
+      - name: ds-container1
+        image: harshalgunda/todoassignment:v2.0
+        ports:
+        - containerPort: 80
+  selector:
+    matchLabels:
+      name: ds-todo

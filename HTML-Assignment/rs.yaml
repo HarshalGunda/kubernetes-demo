@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: demo-rs
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: rs-html-pod
+    matchExpressions:
+      - {key: tier, operator: In, values: [frontend]}
+  template:
+    metadata:
+      name: rs-pod
+      labels:
+        app: rs-html-pod
+        tier: frontend
+    spec:
+      containers:
+      - name: rs-html-assignment
+        image: harshalgunda/html:v6
+        ports:
+        - containerPort: 80

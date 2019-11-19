@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: html-pod
+  labels:
+    app: my-pod
+spec:
+  containers:
+  - name: html-assignment
+    image: harshalgunda/html:v6
+    ports:
+    - containerPort: 80
+
+  - name: demo
+    image: redis
+    ports:
+    - containerPort: 81

@@ -1,0 +1,32 @@
+- Create the deployment:
+	kuberctl create -f filename.yaml
+
+- Describe the deployment:
+	kubectl describe deploy deployment_name
+
+- Get deployment:
+	kubectl get deploy
+
+- There are two ways to upgrade the deployment:
+	1. Using kubectl "set" command:
+
+		kubectl set image deploy deployment_name container_name=image_name:image_version
+
+
+	2. Using kubectl "edit" command:
+
+		KUBE_EDITOR="nano" kubectl edit deploy deployment_name
+
+	Here, we are using nano editor to edit the document.
+
+- We can also check the rollout changes history:
+
+	kubectl rollout history deployment/deployment_name
+
+- We can also check the status of rollouts:
+
+	kubectl rollout status deployment/deployment_name
+
+- We can also scale up and scale down the deployments:
+ 
+	kubectl scale deployment deployment_name --replicas=count

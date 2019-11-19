@@ -1,0 +1,13 @@
+apiVersion: v1 #we are writing for persisten volumes, so apiVersion should be 'v1'
+kind: PersistentVolume #which volume will be used PV or PVC
+metadata:
+ name: pv-gce #type of the volume: emptyDir, hostPath or gcePersistentDisk
+spec:
+ capacity:
+  storage: 15Gi #disk size
+ accessModes:
+  - ReadWriteOnce #read/write access to the disk
+ storageClassName: slow #type of disk: HDD(slow), SSD(fast), etc.
+ gcePersistentDisk:
+  pdName: my-data-disk #disk name
+  fsType: ext4 #type of file system on the disk
